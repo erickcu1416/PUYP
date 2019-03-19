@@ -1,5 +1,7 @@
 {
   "name": "testPUYP",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

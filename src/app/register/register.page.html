@@ -1,0 +1,60 @@
+<ion-header>
+    <ion-toolbar color="white">
+        <ion-title>Registrarse</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <form [formGroup]="loginForm">
+        <ion-item>
+            <ion-label position="floating">Nombre de Uusuario</ion-label>
+            <ion-input formControlName="username" type="text"></ion-input>
+        </ion-item>
+        <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.username">
+                <div class="error-message" *ngIf="loginForm.get('username').hasError(error.type) && (loginForm.get('username').dirty ||loginForm.get('username').touched)">
+                    {{error.message}}
+                </div>
+            </ng-container>
+        </div>
+        <ion-item>
+            <ion-label position="floating">Correo</ion-label>
+            <ion-input formControlName="email" type="text"></ion-input>
+        </ion-item>
+        <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.email">
+                <div class="error-message" *ngIf="loginForm.get('email').hasError(error.type) && (loginForm.get('email').dirty ||loginForm.get('email').touched)">
+                    {{error.message}}
+                </div>
+            </ng-container>
+        </div>
+        <ion-item>
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input formControlName="password" type="password"></ion-input>
+        </ion-item>
+        <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.password">
+                <div class="error-message" *ngIf="loginForm.get('password').hasError(error.type) && (loginForm.get('password').dirty ||loginForm.get('password').touched)">
+                    {{error.message}}
+                </div>
+            </ng-container>
+        </div>
+        <ion-item>
+            <ion-label position="floating">Confirmar Contraseña</ion-label>
+            <ion-input formControlName="confirmPassword" type="password"></ion-input>
+        </ion-item>
+        <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.confirmPassword">
+                <div class="error-message" *ngIf=" loginForm.hasError('notSame') || loginForm.get('confirmPassword').hasError(error.type) && (loginForm.get('confirmPassword').dirty ||loginForm.get('confirmPassword').touched)">
+                    {{error.message}}
+                </div>
+            </ng-container>
+        </div>
+        <ion-button (click)="tryRegister(loginForm.value)" [disabled]="!loginForm.valid" shape="round" size="default" color="primary" expand="block">Registrarse</ion-button>
+    </form>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <p>¿Ya tienes una cuenta? <a routerLink="/login">Iniciar Sesión</a></p>
+        </div>
+    </div>
+</ion-content>

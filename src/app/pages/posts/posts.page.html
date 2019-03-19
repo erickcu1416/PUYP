@@ -1,0 +1,97 @@
+<!-- Back button with a default href -->
+
+<ion-toolbar color="white">
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="tabs"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+        {{ category }}
+    </ion-title>
+</ion-toolbar>
+
+
+<ion-content color="light">
+    <ng-container *ngIf="load">
+        <ion-item class="animated flash slow infinite" *ngFor="let item of [1,1,1,1,1,1,1,1]">
+            <ion-avatar slot="start">
+                <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-avatar>
+            <ion-label>
+                <h3>
+                    <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+                </h3>
+                <p>
+                    <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                </p>
+                <p>
+                    <ion-skeleton-text animated style="width: 40px"></ion-skeleton-text>
+
+                </p>
+                <p>
+                    <ion-skeleton-text animated style="width: 40px"></ion-skeleton-text>
+
+                </p>
+                <p>
+                    <ion-skeleton-text animated style="width: 40px"></ion-skeleton-text>
+
+                </p>
+                <p>
+                    <ion-skeleton-text animated style="width: 40px"></ion-skeleton-text>
+
+                </p>
+                <p>
+                    <ion-skeleton-text animated style="width: 40px"></ion-skeleton-text>
+
+                </p>
+            </ion-label>
+            <ion-label slot="end" text-right>
+                <ion-skeleton-text animated style="width: 40px"></ion-skeleton-text>
+
+            </ion-label>
+        </ion-item>
+    </ng-container>
+
+
+    <div *ngIf="!load">
+        <ng-container *ngFor="let post of posts">
+            <div class="post">
+
+                <ion-item lines="none">
+
+                    <ion-avatar slot="start">
+                        <img src="{{ post.photoURL }}">
+                    </ion-avatar>
+
+                    <ion-label>
+                        <h3>{{ post.university }}</h3>
+                        <h5> {{ post.createdAt }} </h5>
+                    </ion-label>
+                </ion-item>
+
+                <ion-slides [options]="slideSoloOpts" (click)="openPreview(post.bannerURL)">
+
+                    <ion-slide class="image-slide" [style.background-image]="getBackground(post.bannerURL)">
+                    </ion-slide>
+
+                </ion-slides>
+                <ion-item lines="none">
+                    <ion-label text-wrap>
+                        <ion-text>
+                            <h5>{{post.subtitle}}</h5>
+                        </ion-text>
+                    </ion-label>
+                    <ion-buttons>
+                        <ion-label>
+                            <ion-button fill="outline" color="primary" (click)="goToPost(category, post.id)">
+                                Ver más
+                                <ion-icon slot="end" name="add"></ion-icon>
+                            </ion-button>
+                        </ion-label>
+                    </ion-buttons>
+                </ion-item>
+            </div>
+        </ng-container>
+    </div>
+
+
+</ion-content>

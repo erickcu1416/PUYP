@@ -1,0 +1,73 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>record</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<ion-content color="light" *ngIf="loader">
+    <div class="cssload-loader-inner">
+        <div class="cssload-cssload-loader-line-wrap-wrap">
+            <div class="cssload-loader-line-wrap"></div>
+        </div>
+        <div class="cssload-cssload-loader-line-wrap-wrap">
+            <div class="cssload-loader-line-wrap"></div>
+        </div>
+        <div class="cssload-cssload-loader-line-wrap-wrap">
+            <div class="cssload-loader-line-wrap"></div>
+        </div>
+        <div class="cssload-cssload-loader-line-wrap-wrap">
+            <div class="cssload-loader-line-wrap"></div>
+        </div>
+        <div class="cssload-cssload-loader-line-wrap-wrap">
+            <div class="cssload-loader-line-wrap"></div>
+        </div>
+    </div>
+</ion-content>
+<ion-content *ngIf="!loader">
+    <div *ngIf="none" class="page-wrap d-flex flex-row align-items-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 text-center">
+                    <span class="display-1 d-block">💭</span>
+                    <div class="mb-4 lead">Al parecer aún no haz solicitado un examén</div>
+                    <ion-button fill="outline" (click)="reload()">Ir a examenes.</ion-button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ion-list #list *ngIf="!none">
+        <ion-list-header>
+            Examenes solicitados.
+        </ion-list-header>
+        <ion-item-sliding *ngFor="let item of userRes">
+            <ion-item (click)="help()">
+                <ion-text>
+                    <h3 color="primary">Universidad: {{item.universityName}}</h3>
+                    <h4 color="medium"> Categoria: {{item.category}} </h4>
+                    <h5 color="secondary">Fecha: {{item.date}} </h5>
+                </ion-text>
+            </ion-item>
+            <ion-item-options side="start">
+                <ion-item-option color="danger" (click)="delete(item)">
+                    <ion-icon slot="icon-only" name="trash"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+            <ion-item-options side="end">
+                <ion-item-option color="success" (click)="goToPost(item)">
+                    <ion-icon slot="icon-only" name="list-box"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+    <div>
+
+    </div>
+</ion-content>

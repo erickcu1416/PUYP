@@ -1,0 +1,106 @@
+<ion-toolbar color="white">
+    <ion-buttons slot="end">
+        <ion-button (click)="trylogOut()" icon-only>
+            <ion-icon name="exit" class="badge-container">
+            </ion-icon>
+            SALIR
+        </ion-button>
+    </ion-buttons>
+</ion-toolbar>
+
+<ion-content *ngIf="loader">
+    <div class="cssload-loader-inner">
+        <div class="cssload-cssload-loader-line-wrap-wrap">
+            <div class="cssload-loader-line-wrap"></div>
+        </div>
+        <div class="cssload-cssload-loader-line-wrap-wrap">
+            <div class="cssload-loader-line-wrap"></div>
+        </div>
+        <div class="cssload-cssload-loader-line-wrap-wrap">
+            <div class="cssload-loader-line-wrap"></div>
+        </div>
+        <div class="cssload-cssload-loader-line-wrap-wrap">
+            <div class="cssload-loader-line-wrap"></div>
+        </div>
+        <div class="cssload-cssload-loader-line-wrap-wrap">
+            <div class="cssload-loader-line-wrap"></div>
+        </div>
+    </div>
+</ion-content>
+
+<ion-content *ngIf="!loader">
+
+    <ion-row padding>
+        <!-- Avatara -->
+        <ion-col col-3>
+            <img src="https://avatars1.githubusercontent.com/u/918975?v=3&s=120" class="avatar" alt="">
+        </ion-col>
+        <!-- Information about user -->
+        <ion-col col-3 text-center>
+            <ion-text>
+                <h4>Bienvenido</h4>
+                <p no-padding no-margin>Todo es posible cuando</p>
+            </ion-text>
+        </ion-col>
+        <!-- <ion-col col-3 text-center>
+            <h6>114</h6>
+            <p no-paddin no-margin>followers</p>
+        </ion-col>
+        <ion-col col-3 text-center>
+            <h6>119</h6>
+            <p no-paddin no-margin>following</p>
+        </ion-col> -->
+    </ion-row>
+
+    <!-- Edit/follow button -->
+    <!-- <ion-row no-padding no-margin>
+        <ion-col no-padding no-margin col-4></ion-col>
+        <ion-col no-padding no-margin text-center col-8>
+            <ion-button fill="outline" class="edit-button">Edit your profile</ion-button>
+        </ion-col>
+        <ion-col col-3></ion-col>
+    </ion-row> -->
+
+    <!-- Profile info -->
+    <div padding>
+        <p no-margin no-padding><b>{{user.name}}</b></p>
+        <p no-padding no-margin class="info">Sofftware developer, open-source lover, invoker spammer & heavy metal guitarist</p>
+        <p no-padding no-margin class="info"><a href="#">{{user.email}}</a></p>
+    </div>
+
+    <!-- Segments -->
+    <!-- <div>
+        <ion-segment [(ngModel)]="profile_segment">
+            <ion-segment-button value="grid">
+                <ion-icon name="apps"></ion-icon>
+            </ion-segment-button>
+            <ion-segment-button value="list">
+                <ion-icon name="list"></ion-icon>
+            </ion-segment-button>
+            <ion-segment-button value="tagged">
+                <ion-icon name="photos"></ion-icon>
+            </ion-segment-button>
+            <ion-segment-button value="saved">
+                <ion-icon name="bookmark"></ion-icon>
+            </ion-segment-button>
+        </ion-segment>
+    </div> -->
+
+    <!-- Segment content
+    <div [ngSwitch]="profile_segment">
+        <ion-list *ngSwitchCase="'grid'">
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-4 class="grid_img" *ngFor="let i of images">
+                        <img [src]="i.post_img" alt="">
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'list'">
+
+
+        </ion-list>
+    </div> -->
+</ion-content>

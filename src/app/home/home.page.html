@@ -1,12 +1,9 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+<ion-content class="card-background-page">
+    <ng-container *ngFor="let category of categories">
+        <div class="card" (click)="goToPosts(category.dbCategory)">
+            <img src="assets/card-saopaolo.png" />
+            <div class="card-title">{{category.nombre}}</div>
+            <div class="card-subtitle">{{category.dbCategory}}</div>
+        </div>
+    </ng-container>
 </ion-content>
