@@ -33,17 +33,19 @@
     <ion-row padding>
         <!-- Avatara -->
         <ion-col col-3>
-            <img src="https://avatars1.githubusercontent.com/u/918975?v=3&s=120" class="avatar" alt="">
+            <img src="{{profile.photo}}" class="avatar" alt="">
         </ion-col>
         <!-- Information about user -->
         <ion-col col-3 text-center>
             <ion-text>
-                <h4>Bienvenido</h4>
-                <p no-padding no-margin>Todo es posible cuando</p>
+                <h6> <b> {{profile.name}} </b> </h6>
+                <p no-padding no-margin> {{profile.slogan}} </p>
             </ion-text>
         </ion-col>
-        <!-- <ion-col col-3 text-center>
-            <h6>114</h6>
+        <!--
+        <ion-col col-3 text-center>
+            <ion-icon name="pin" color="secondary"></ion-icon>
+            <br>
             <p no-paddin no-margin>followers</p>
         </ion-col>
         <ion-col col-3 text-center>
@@ -52,20 +54,13 @@
         </ion-col> -->
     </ion-row>
 
-    <!-- Edit/follow button -->
-    <!-- <ion-row no-padding no-margin>
-        <ion-col no-padding no-margin col-4></ion-col>
-        <ion-col no-padding no-margin text-center col-8>
-            <ion-button fill="outline" class="edit-button">Edit your profile</ion-button>
-        </ion-col>
-        <ion-col col-3></ion-col>
-    </ion-row> -->
+
 
     <!-- Profile info -->
     <div padding>
-        <p no-margin no-padding><b>{{user.name}}</b></p>
-        <p no-padding no-margin class="info">Sofftware developer, open-source lover, invoker spammer & heavy metal guitarist</p>
-        <p no-padding no-margin class="info"><a href="#">{{user.email}}</a></p>
+        <p no-margin no-padding><b>Edad: </b> {{profile.age}}</p>
+        <p no-padding no-margin class="info"> {{profile.description}} </p>
+        <p no-padding no-margin class="info"><a href="#"> {{profile.email}} </a></p>
     </div>
 
     <!-- Segments -->
@@ -103,4 +98,18 @@
 
         </ion-list>
     </div> -->
+    <hr class="style5">
+    <!-- Edit/follow button -->
+    <ion-row no-padding no-margin>
+        <ion-col no-padding no-margin col-4></ion-col>
+        <ion-col no-padding no-margin text-center col-8>
+            <ion-button (click)="goToEdit()" fill="outline" class="edit-button">
+                <ion-label>
+                    Editar perfil
+                </ion-label>
+                <ion-icon slot="end" name="create"></ion-icon>
+            </ion-button>
+        </ion-col>
+        <ion-col col-3></ion-col>
+    </ion-row>
 </ion-content>

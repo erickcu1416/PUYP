@@ -1,3 +1,4 @@
+import { EditprofilePageModule } from './pages/editprofile/editprofile.module';
 import { MapamodalPageModule } from './pages/mapamodal/mapamodal.module';
 import { UserResolver } from './home/user.resolver';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -26,6 +27,7 @@ import { ViewModalPageModule } from './pages/view-modal/view-modal.module';
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
   ViewModalPageModule,
   MapamodalPageModule,
+  EditprofilePageModule,
   FormsModule,
     ReactiveFormsModule,
     AngularFireAuthModule,

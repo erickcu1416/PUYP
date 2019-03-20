@@ -107,6 +107,7 @@ export class RegisterPage implements OnInit {
     this.authService.doRegister(value).then(
       res => {
         this.createName(value.username);
+        this.createUser(value);
       },
       err => {
         console.log(err);
@@ -128,5 +129,18 @@ export class RegisterPage implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  createUser(value) {
+    const obj = {
+      email: value.email,
+      photo:
+        'https://www.ttnc.co.uk/storage/app/media/inclusive-features-user.svg',
+      age: 0,
+      name: value.username,
+      description: 'Aquí va tu descripción',
+      slogan: 'Me gusta la ingeniería'
+    };
+    this.authService.doUserFirestore(obj);
   }
 }

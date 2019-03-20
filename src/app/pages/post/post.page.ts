@@ -7,6 +7,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Sanitizer } from '@angular/core';
 import { RequestsService } from 'src/app/services/requests/requests.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-post',
@@ -39,7 +40,8 @@ export class PostPage implements OnInit {
     private route: ActivatedRoute,
     private afs: AngularFirestore,
     private modalCtrl: ModalController,
-    private _requestService: RequestsService
+    private _requestService: RequestsService,
+    public alertController: AlertController
   ) {}
 
   ngOnInit() {
@@ -91,7 +93,6 @@ export class PostPage implements OnInit {
     this.userPostDataDocument.valueChanges().subscribe((data: Userpost) => {
       if (data) {
         this.userPostData = data;
-
       }
       this.loader2 = false;
     });
@@ -109,18 +110,39 @@ export class PostPage implements OnInit {
       .then(modal => modal.present());
   }
 
-  sendSol() {
-    const id = this.afs.createId();
-    const sol = {
-      id: id,
-      postId: this.post.id,
-      name: this.user.name,
-      email: this.user.email,
-      date: new Date().toLocaleString(),
-      category: this.category,
-      universtiyEmail: this.post.email,
-      universityName: this.post.university,
-    };
-    this._requestService.addExam(this.post.email, id, sol);
+  async sendSol() {
+    const alert = await this.alertController.create({
+      header: '¿Estas seguro?',
+      message: 'Una vez enviada tu solicitud podras reir :D',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: blah => {
+            console.log('Confirm Cancel: blah');
+          }
+        },
+        {
+          text: 'Si, estoy seguro.',
+          handler: () => {
+            const id = this.afs.createId();
+            const sol = {
+              id: id,
+              postId: this.post.id,
+              name: this.user.name,
+              email: this.user.email,
+              date: new Date().toLocaleString(),
+              category: this.category,
+              universtiyEmail: this.post.email,
+              universityName: this.post.university
+            };
+            this._requestService.addExam(this.post.email, id, sol);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 }

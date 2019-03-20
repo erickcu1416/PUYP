@@ -42,6 +42,7 @@ export class RequestsService {
       }
     );
   }
+
   deleteExam (email, universityEmail, id) {
     this.afs.collection('requests').doc(universityEmail).collection('request').doc(id).delete().then(
       data => {

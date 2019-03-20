@@ -1,0 +1,66 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>editprofile</ion-title>
+        <ion-buttons slot="end">
+            <ion-button icon-only (click)="updateProfile()">
+                <ion-icon name="checkmark" color="primary"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-button (click)="close()">Close modal</ion-button>
+
+<ion-content padding>
+
+    <!-- Profile picture -->
+    <div text-center>
+        <img [src]="profile.photo" class="edit-avatar" alt="">
+        <br>
+        <ion-label class="change-text"> Change Photo</ion-label>
+        <ion-input type="file" accept="image/*" (change)="changeListener($event)"></ion-input>
+    </div>
+
+    <!-- Form -->
+
+
+
+
+
+
+
+    <!-- Private information form -->
+    <div margin-top padding-top>
+        <h4 no-margin no-padding class="info-text">Información</h4>
+        <hr class="custom-hr" color="gray">
+    </div>
+    <ion-item>
+        <ion-label>
+            <ion-icon name="person" color="gray"></ion-icon>
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="username" placeholder="Nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>
+            <ion-icon name="quote" color="gray"></ion-icon>
+        </ion-label>
+        <ion-input type="number" placeholder="Edad"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>
+            <ion-icon name="clipboard" color="gray"></ion-icon>
+        </ion-label>
+        <ion-input type="text" placeholder="Eslogan"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>
+            <ion-icon name="alert" color="gray"></ion-icon>
+        </ion-label>
+        <ion-input type="text" placeholder="Descripción"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>
+            <ion-icon name="transgender" color="gray"></ion-icon>
+        </ion-label>
+    </ion-item>
+
+</ion-content>

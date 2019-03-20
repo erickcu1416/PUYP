@@ -1,30 +1,38 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class AuthService {
-
-   constructor(public afAuth: AngularFireAuth) { }
+  constructor(public afAuth: AngularFireAuth, private afs: AngularFirestore) {}
 
   doRegister(value) {
     return new Promise((resolve, reject) => {
-      this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password)
-        .then(res => {
-          resolve(res);
-        }, err => reject(err));
+      this.afAuth.auth
+        .createUserWithEmailAndPassword(value.email, value.password)
+        .then(
+          res => {
+            resolve(res);
+          },
+          err => reject(err)
+        );
     });
   }
 
   doLogin(value) {
     return new Promise<any>((resolve, reject) => {
-      this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password)
-        .then(res => {
-          console.log('Sucesss');
-          resolve(res);
-        }, err => reject(err));
+      this.afAuth.auth
+        .signInWithEmailAndPassword(value.email, value.password)
+        .then(
+          res => {
+            console.log("Sucesss");
+            resolve(res);
+          },
+          err => reject(err)
+        );
     });
   }
 
@@ -37,5 +45,18 @@ export class AuthService {
         reject();
       }
     });
+  }
+
+  doUserFirestore(value) {
+    this.afs.collection('users').doc(value.email).set(value.data).then(
+      data => {
+        console.log('Exito al crear usuario en la base de datos');
+        console.log(data);
+      }, err => {
+        console.log(err);
+        console.log('No se pudo crear el usuario');
+      }
+
+    );
   }
 }

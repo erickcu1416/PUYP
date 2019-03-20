@@ -47,7 +47,9 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: './pages/profile/profile.module#ProfilePageModule',
     resolve: { data: UserResolver }
-  }
+  },
+  { path: 'inituser', loadChildren: './pages/inituser/inituser.module#InituserPageModule' },
+  { path: 'editprofile', loadChildren: './pages/editprofile/editprofile.module#EditprofilePageModule' }
 ];
 
 @NgModule({

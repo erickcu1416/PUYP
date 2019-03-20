@@ -7,7 +7,7 @@
 <ion-content padding>
     <form [formGroup]="loginForm">
         <ion-item>
-            <ion-label position="floating">Nombre de Uusuario</ion-label>
+            <ion-label position="floating">Nombre de Usuario</ion-label>
             <ion-input formControlName="username" type="text"></ion-input>
         </ion-item>
         <div class="error-messages">
@@ -56,5 +56,8 @@
         <div class="col-md-4 col-md-offset-4">
             <p>¿Ya tienes una cuenta? <a routerLink="/login">Iniciar Sesión</a></p>
         </div>
+        <!-- <div class="col-md-4 col-md-offset-4">
+            <p>Already have an account? <a routerLink="/inituser">Login</a></p>
+        </div> -->
     </div>
 </ion-content>
